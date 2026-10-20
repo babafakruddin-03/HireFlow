@@ -1,0 +1,118 @@
+.details-page {
+  max-width: 1000px;
+  min-height: 60vh;
+  margin: 0 auto;
+  padding: 45px 24px 70px;
+}
+
+.details-back {
+  margin-bottom: 24px;
+  padding: 10px 15px;
+  background: white;
+  color: #205b43;
+  border: 1px solid #dfe9df;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.details-card {
+  padding: 35px;
+  border: 1px solid #e4ece4;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 15px 40px #1c49300b;
+}
+
+.details-company-icon {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  background: #eaf5ec;
+  color: #286b4b;
+  border-radius: 13px;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.details-badge {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #eff8f0;
+  color: #286b4b;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.details-card h1 {
+  margin: 18px 0 8px;
+  color: #17251f;
+  font-size: clamp(27px, 4vw, 38px);
+}
+
+.details-card h2 {
+  margin: 0;
+  color: #6b7970;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.details-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 25px 0;
+  color: #53685a;
+  font-size: 14px;
+}
+
+.details-card hr {
+  border: 0;
+  border-top: 1px solid #e8eee8;
+  margin: 28px 0;
+}
+
+.details-card h3 {
+  margin-top: 25px;
+  color: #205b43;
+  font-size: 17px;
+}
+
+.details-description {
+  color: #637168;
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+
+.details-apply {
+  margin-top: 25px;
+  padding: 14px 22px;
+  background: #205b43;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.details-apply:hover {
+  background: #16442f;
+}
+
+@media (max-width: 600px) {
+  .details-page {
+    padding: 30px 15px 50px;
+  }
+
+  .details-card {
+    padding: 22px;
+  }
+
+  .details-meta {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

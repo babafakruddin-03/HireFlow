@@ -1,0 +1,461 @@
+/* ========================================
+   MY APPLICATIONS PAGE
+======================================== */
+
+.my-applications-page {
+  max-width: 1100px;
+  min-height: 60vh;
+  margin: 0 auto;
+  padding: 45px 24px 70px;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   PAGE HEADING
+======================================== */
+
+.applications-heading {
+  margin: 20px 0 30px;
+}
+
+.applications-heading .eyebrow {
+  display: inline-block;
+  color: #28734f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.applications-heading h1 {
+  margin: 12px 0;
+  color: #17251f;
+  font-size: clamp(30px, 4vw, 40px);
+  line-height: 1.2;
+}
+
+.applications-heading p {
+  margin: 0;
+  color: #6b7970;
+  line-height: 1.7;
+}
+
+/* ========================================
+   REFRESH BUTTON
+======================================== */
+
+.applications-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 18px;
+  border: 1px solid #cfe3d5;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #205b43;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.applications-refresh-btn:hover:not(:disabled) {
+  background: #edf7ef;
+  transform: translateY(-1px);
+}
+
+.applications-refresh-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   SUCCESS MESSAGE
+======================================== */
+
+.applications-success {
+  margin-bottom: 22px;
+  padding: 14px 18px;
+  border: 1px solid #c8e8d0;
+  border-radius: 10px;
+  background: #effaf1;
+  color: #246b39;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ========================================
+   APPLICATION STATISTICS
+======================================== */
+
+.application-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+  margin: 30px 0 40px;
+}
+
+.application-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 165px;
+  padding: 19px 16px;
+  border: 1px solid #e4ece4;
+  border-radius: 14px;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(28, 73, 48, 0.04);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.application-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(28, 73, 48, 0.09);
+}
+
+.application-stat-card.stat-active {
+  border-color: #28734f;
+  box-shadow: 0 0 0 2px rgba(40, 115, 79, 0.1);
+}
+
+.application-stat-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  background: #edf5ef;
+  font-size: 19px;
+}
+
+.application-stat-label {
+  margin-bottom: 7px;
+  color: #647369;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.application-stat-card strong {
+  color: #17251f;
+  font-size: 29px;
+  line-height: 1.2;
+}
+
+.application-stat-caption {
+  margin-top: 8px;
+  color: #89948c;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Statistic variations */
+
+.stat-total .application-stat-icon {
+  background: #edf2ff;
+}
+
+.stat-pending .application-stat-icon {
+  background: #fff5dc;
+}
+
+.stat-shortlisted .application-stat-icon {
+  background: #e7f2ff;
+}
+
+.stat-rejected .application-stat-icon {
+  background: #ffebeb;
+}
+
+.stat-hired .application-stat-icon {
+  background: #e5f7e9;
+}
+
+/* ========================================
+   APPLICATION RESULTS HEADING
+======================================== */
+
+.applications-results-section {
+  margin-top: 15px;
+}
+
+.applications-results-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.applications-results-heading h2 {
+  margin: 0 0 7px;
+  color: #17251f;
+  font-size: 23px;
+}
+
+.applications-results-heading p {
+  margin: 0;
+  color: #7a877e;
+  font-size: 13px;
+}
+
+.applications-clear-filter {
+  flex-shrink: 0;
+  padding: 9px 13px;
+  border: 1px solid #d8e6dc;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #286b4b;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.applications-clear-filter:hover {
+  background: #edf7ef;
+}
+
+/* ========================================
+   APPLICATION LIST
+======================================== */
+
+.applications-list {
+  display: grid;
+  gap: 18px;
+}
+
+.application-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e4ece4;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(28, 73, 48, 0.03);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(28, 73, 48, 0.07);
+}
+
+.application-company-icon {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #eaf5ec;
+  color: #286b4b;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.application-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.application-info h2 {
+  margin: 0 0 8px;
+  color: #17251f;
+  font-size: 19px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.application-company {
+  margin: 0 0 10px;
+  color: #53685a;
+  font-weight: 600;
+}
+
+.application-date {
+  margin: 0;
+  color: #7a877e;
+  font-size: 13px;
+}
+
+.application-status-container {
+  flex-shrink: 0;
+}
+
+.application-status {
+  display: inline-block;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.status-pending {
+  background: #fff5dc;
+  color: #8a6200;
+}
+
+.status-shortlisted {
+  background: #e7f2ff;
+  color: #205b9b;
+}
+
+.status-rejected {
+  background: #ffebeb;
+  color: #a52c2c;
+}
+
+.status-hired {
+  background: #e5f7e9;
+  color: #206b37;
+}
+
+/* ========================================
+   LOADING, EMPTY AND ERROR MESSAGES
+======================================== */
+
+.applications-message {
+  padding: 40px 25px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e4ece4;
+  border-radius: 15px;
+}
+
+.applications-message h3 {
+  margin-top: 0;
+  color: #205b43;
+  font-size: 20px;
+}
+
+.applications-message p {
+  color: #6b7970;
+  line-height: 1.7;
+}
+
+.applications-empty-icon {
+  margin-bottom: 12px;
+  font-size: 42px;
+}
+
+.applications-error {
+  border-color: #f0d0d0;
+  background: #fffafa;
+}
+
+.applications-error h3 {
+  color: #a52c2c;
+}
+
+.applications-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 11px 17px;
+  border: none;
+  border-radius: 9px;
+  background: #286b4b;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.applications-retry-btn:hover {
+  background: #205b43;
+}
+
+/* ========================================
+   TABLET RESPONSIVE
+======================================== */
+
+@media (max-width: 1000px) {
+  .application-stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .my-applications-page {
+    padding: 30px 15px 50px;
+  }
+
+  .application-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 25px 0 32px;
+  }
+
+  .application-stat-card {
+    min-height: 150px;
+    padding: 16px 13px;
+  }
+
+  .application-stat-card strong {
+    font-size: 26px;
+  }
+
+  .application-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .application-info {
+    flex-basis: calc(100% - 70px);
+  }
+
+  .application-status-container {
+    margin-left: 69px;
+  }
+
+  .applications-results-heading h2 {
+    font-size: 20px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE SCREENS
+======================================== */
+
+@media (max-width: 400px) {
+  .application-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .application-stat-card {
+    padding: 13px 10px;
+  }
+
+  .application-stat-label {
+    font-size: 11px;
+  }
+
+  .application-stat-caption {
+    font-size: 10px;
+  }
+
+  .applications-results-heading {
+    align-items: flex-start;
+  }
+
+  .application-card {
+    padding: 15px;
+  }
+}

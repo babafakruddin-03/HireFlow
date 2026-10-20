@@ -1,0 +1,143 @@
+.register-page {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 45px 20px 70px;
+  background: #f7faf7;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 35px;
+  background: white;
+  border: 1px solid #e4ece4;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px #1c49300b;
+}
+
+.register-brand {
+  margin-bottom: 20px;
+  color: #205b43;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.register-brand span {
+  color: #69a77d;
+}
+
+.register-card h1 {
+  margin: 0 0 10px;
+  color: #17251f;
+  font-size: 29px;
+}
+
+.register-subtitle {
+  margin: 0 0 28px;
+  color: #6b7970;
+  line-height: 1.7;
+}
+
+.register-field {
+  margin-bottom: 18px;
+}
+
+.register-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #344b3c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.register-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #dce6dc;
+  border-radius: 9px;
+  background: #fff;
+  color: #17251f;
+  font: inherit;
+  outline: none;
+}
+
+.register-field input:focus {
+  border-color: #43865d;
+  box-shadow: 0 0 0 3px #43865d18;
+}
+
+.register-submit {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+  border: 0;
+  border-radius: 9px;
+  background: #205b43;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.register-submit:hover {
+  background: #16442f;
+}
+
+.register-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.register-error {
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #a52c2c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.register-success {
+  padding: 12px;
+  border-radius: 8px;
+  background: #eaf7ed;
+  color: #206b37;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.register-login-text {
+  margin-top: 22px;
+  text-align: center;
+  color: #6b7970;
+  font-size: 14px;
+}
+
+.register-login-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #205b43;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.register-role-note {
+  margin-top: 20px;
+  color: #7a877e;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .register-page {
+    padding: 25px 14px 45px;
+  }
+
+  .register-card {
+    padding: 24px 20px;
+  }
+}

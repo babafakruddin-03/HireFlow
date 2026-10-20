@@ -1,0 +1,42 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Django local database
+backend/db.sqlite3
+
+# Uploaded files and resumes
+backend/media/
+
+# Django collected static files
+backend/staticfiles/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Node dependencies
+frontend/node_modules/
+
+# Production build output
+frontend/dist/
+
+# Local logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+/backend/db.sqlite3
+/backend/media/

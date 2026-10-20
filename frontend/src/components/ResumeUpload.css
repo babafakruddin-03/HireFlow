@@ -1,0 +1,146 @@
+.resume-page {
+  min-height: 65vh;
+  padding: 60px 20px;
+  background: #f5f8f6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.resume-card {
+  width: 100%;
+  max-width: 620px;
+  padding: 35px;
+  background: #ffffff;
+  border: 1px solid #e1e9e3;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(20, 60, 35, 0.08);
+}
+
+.resume-back {
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  color: #247747;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.resume-heading {
+  margin: 25px 0 30px;
+  text-align: center;
+}
+
+.resume-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 18px;
+  background: #e8f5ec;
+  font-size: 30px;
+}
+
+.resume-heading h1 {
+  margin: 18px 0 10px;
+  color: #173d2a;
+  font-size: 30px;
+}
+
+.resume-heading p {
+  color: #69776d;
+  line-height: 1.6;
+}
+
+.resume-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.resume-card label {
+  color: #263b2d;
+  font-weight: 600;
+}
+
+.resume-card input[type="file"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px dashed #9bb9a4;
+  border-radius: 10px;
+  background: #f9fcfa;
+  box-sizing: border-box;
+}
+
+.selected-resume {
+  color: #53665a;
+  overflow-wrap: anywhere;
+}
+
+.resume-upload-btn {
+  margin-top: 8px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #247747;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resume-upload-btn:hover {
+  background: #195c35;
+}
+
+.resume-upload-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.current-resume {
+  margin-bottom: 25px;
+  padding: 18px;
+  border: 1px solid #cce8d4;
+  border-radius: 10px;
+  background: #f1faf3;
+}
+
+.current-resume h3 {
+  margin-top: 0;
+  color: #23663c;
+}
+
+.current-resume a {
+  color: #247747;
+  overflow-wrap: anywhere;
+}
+
+.resume-success {
+  margin-top: 20px;
+  color: #19733b;
+  font-weight: 600;
+}
+
+.resume-error {
+  margin-top: 20px;
+  color: #c12c2c;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .resume-page {
+    padding: 30px 14px;
+  }
+
+  .resume-card {
+    padding: 22px;
+  }
+
+  .resume-heading h1 {
+    font-size: 25px;
+  }
+}
