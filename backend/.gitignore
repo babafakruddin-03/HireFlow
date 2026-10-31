@@ -40,3 +40,29 @@ Thumbs.db
 .idea/
 /backend/db.sqlite3
 /backend/media/
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local database
+backend/db.sqlite3
+
+# Uploaded files
+backend/media/
+
+# Temporary files
+backend/programms.txt
+frontend/programms.txt
+db.sqlite3
+media/
+.env
+.venv/
+__pycache__/
+*.py[cod]

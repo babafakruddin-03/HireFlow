@@ -1,8 +1,3 @@
-"""
-Django settings for config project.
-
-HireFlow configuration for local development and deployment.
-"""
 
 import os
 from pathlib import Path
@@ -10,26 +5,19 @@ from pathlib import Path
 import dj_database_url
 
 
-# ============================================================
 # BASE DIRECTORY
-# ============================================================
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# ============================================================
 # SECURITY SETTINGS
-# ============================================================
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
-# Production hosting must provide DJANGO_SECRET_KEY.
-# The fallback is only for local development.
-SECRET_KEY = os.environ.get(
-    "DJANGO_SECRET_KEY",
-    "django-insecure-local-development-only",
-)
+if not SECRET_KEY:
+    if os.environ.get("DEBUG", "True").lower() == "true":
+        SECRET_KEY = "django-insecure-local-development-only"
+    else:
+        raise ValueError("DJANGO_SECRET_KEY must be set in production.")
 
-
-# DEBUG remains enabled locally unless configured otherwise.
 DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
 
 ALLOWED_HOSTS = [
@@ -42,10 +30,7 @@ ALLOWED_HOSTS = [
 ]
 
 
-# ============================================================
 # APPLICATIONS
-# ============================================================
-
 INSTALLED_APPS = [
     "corsheaders",
     "django.contrib.admin",
@@ -62,27 +47,11 @@ INSTALLED_APPS = [
 ]
 
 
-# ============================================================
-# DJANGO REST FRAMEWORK
-# ============================================================
-
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
-    ],
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
-    ],
-}
-
-
-# ============================================================
 # MIDDLEWARE
-# ============================================================
-
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -92,19 +61,12 @@ MIDDLEWARE = [
 ]
 
 
-# ============================================================
-# URLS AND APPLICATION ENTRY POINTS
-# ============================================================
-
+# URLS AND WSGI
 ROOT_URLCONF = "config.urls"
-
 WSGI_APPLICATION = "config.wsgi.application"
 
 
-# ============================================================
 # TEMPLATES
-# ============================================================
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -121,14 +83,7 @@ TEMPLATES = [
 ]
 
 
-# ============================================================
 # DATABASE
-# ============================================================
-
-# When DATABASE_URL is provided by the hosting service,
-# use PostgreSQL or the database specified by that URL.
-# Otherwise, continue using the existing local SQLite database.
-
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 if DATABASE_URL:
@@ -148,10 +103,7 @@ else:
     }
 
 
-# ============================================================
 # PASSWORD VALIDATION
-# ============================================================
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": (
@@ -180,63 +132,41 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# ============================================================
-# INTERNATIONALIZATION
-# ============================================================
-
+# LANGUAGE AND TIME ZONE
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
 
-# ============================================================
 # STATIC FILES
-# ============================================================
-
 STATIC_URL = "/static/"
-
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": (
+            "whitenoise.storage.CompressedManifestStaticFilesStorage"
+        ),
+    },
+}
 
-# ============================================================
+
 # MEDIA FILES
-# ============================================================
-
-# Used for uploaded resumes during local development.
-# Production resume storage must be configured separately.
-
 MEDIA_URL = "/media/"
-
 MEDIA_ROOT = BASE_DIR / "media"
 
 
-# ============================================================
 # EMAIL
-# ============================================================
-
-# Preserve the existing console email configuration.
-# Emails will appear in the server console rather than
-# being delivered to real email addresses.
-
-EMAIL_BACKEND = (
-    "django.core.mail.backends.console.EmailBackend"
-)
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 
-# ============================================================
 # CORS
-# ============================================================
-
-# Local development origins are used by default.
-# Add the deployed frontend origin through CORS_ALLOWED_ORIGINS
-# in the hosting environment when deploying.
-
 CORS_ALLOWED_ORIGINS = [
-    origin.strip()
+    origin.strip().rstrip("/")
     for origin in os.environ.get(
         "CORS_ALLOWED_ORIGINS",
         "http://localhost:5173,http://127.0.0.1:5173",
@@ -245,8 +175,26 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-# ============================================================
-# DEFAULT PRIMARY KEY
-# ============================================================
+# DJANGO REST FRAMEWORK
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 
+
+# PRODUCTION SECURITY
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = "DENY"
+    SECURE_REFERRER_POLICY = "same-origin"
+
+
+# DEFAULT PRIMARY KEY
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
