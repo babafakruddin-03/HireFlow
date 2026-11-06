@@ -32,23 +32,21 @@ ALLOWED_HOSTS = [
 
 # APPLICATIONS
 INSTALLED_APPS = [
-    "django.contrib.staticfiles",
     "cloudinary_storage",
-    "cloudinary",
-    "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "cloudinary",
+    "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
     "accounts",
     "jobs",
     "applications",
 ]
-
 # MIDDLEWARE
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
