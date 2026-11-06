@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -47,6 +46,8 @@ INSTALLED_APPS = [
     "jobs",
     "applications",
 ]
+
+
 # MIDDLEWARE
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -142,10 +143,26 @@ USE_TZ = True
 # STATIC FILES
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = (
-    "whitenoise.storage.CompressedManifestStaticFilesStorage"
-)     
 
+# Compatibility setting for django-cloudinary-storage
+STATICFILES_STORAGE = (
+    "django.contrib.staticfiles.storage.StaticFilesStorage"
+)
+
+
+# MEDIA FILES
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
+    "SECURE": True,
+}
+
+
+# FILE STORAGE
 STORAGES = {
     "default": {
         "BACKEND": (
@@ -156,20 +173,9 @@ STORAGES = {
     },
     "staticfiles": {
         "BACKEND": (
-            "whitenoise.storage.CompressedStaticFilesStorage"
+            "django.contrib.staticfiles.storage.StaticFilesStorage"
         ),
     },
-}
-
-
-# MEDIA FILES
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
-    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
-    "SECURE": True,
 }
 
 
